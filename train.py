@@ -68,14 +68,14 @@ def train(args, dataloader, model, encoder, optimizer, summary, epoch):
             t = time.time()
         
         # Visualize predictions
-        if i % args.vis_iter == 0:
+        # if i % args.vis_iter == 0:
 
             # Visualize image
-            summary.add_image('train/image', visualize_image(image), epoch)
+            # summary.add_image('train/image', visualize_image(image), epoch)
 
             # Visualize scores
-            summary.add_image('train/score', 
-                visualize_score(pred_encoded, gt_encoded, grid), epoch)
+            # summary.add_image('train/score', 
+            #     visualize_score(pred_encoded, gt_encoded, grid), epoch)
             
             # Visualize uncertainty
             # summary.add_image('train/uncertainty',
@@ -217,7 +217,7 @@ def parse_args():
 
     # Data options
     parser.add_argument('--root', type=str, 
-                        default='data/kitti',
+                        default='/media/jetze/Elements/kitti-3d/',
                         help='root directory of the KITTI dataset')
     parser.add_argument('--grid-size', type=float, nargs=2, default=(80., 80.),
                         help='width and depth of validation grid, in meters')
@@ -262,7 +262,7 @@ def parse_args():
     # Training options
     parser.add_argument('-e', '--epochs', type=int, default=600,
                         help='number of epochs to train for')
-    parser.add_argument('-b', '--batch_size', type=int, default=8,
+    parser.add_argument('-b', '--batch_size', type=int, default=2,
                         help='mini-batch size for training')
     
     # Experiment options
